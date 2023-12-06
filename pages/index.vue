@@ -2,7 +2,7 @@
   <div style="display: flex; flex-direction: column">
     <div class="product-listing-wrapper">
       <div style="display: flex; flex-direction: column">
-        <div class="text-gray-8 text-xlarge text-bold">"Baju Kokos Harian"</div>
+        <div class="text-gray-8 text-xlarge text-bold">"Baju Koko Harian"</div>
         <div class="text-gray-4 text-medium">
           {{
             isLoading
