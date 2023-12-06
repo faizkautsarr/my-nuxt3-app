@@ -1,56 +1,19 @@
 <template>
   <div class="container">
-    <div
-      style="
-        position: fixed;
-        display: flex;
-        background-color: black;
-        align-items: center;
-        top: 0;
-        left: 0;
-        right: 0;
-        justify-content: space-between;
-        padding: 12px;
-      "
-    >
+    <div class="navbar">
       <!-- click to home -->
       <img
         src="~/assets/images/brand_logo.png"
         alt="brand logo"
         style="width: 24px"
       />
-      <span class="material-symbols-outlined" style="color: white"> menu </span>
+      <span class="material-symbols-outlined text-white"> menu </span>
     </div>
 
-    <div
-      style="
-        margin-top: 64px;
-        padding: 16px 16px 0px 16px;
-        flex-direction: row;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      "
-    >
+    <div class="product-listing-wrapper">
       <div style="display: flex; flex-direction: column">
-        <div
-          style="
-            color: #000;
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 800;
-          "
-        >
-          "Baju Koko Harian"
-        </div>
-        <div
-          style="
-            color: #848181;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 400;
-          "
-        >
+        <div class="text-gray-8 text-xlarge text-bold">"Baju Koko Harian"</div>
+        <div class="text-gray-4 text-medium">
           {{
             isLoading
               ? 'Sedang mengambil data produk...'
@@ -61,27 +24,10 @@
     </div>
 
     <div style="padding: 0px 16px 0px 16px">
-      <div
-        v-if="isLoading"
-        style="
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        "
-      >
+      <div v-if="isLoading" class="product-loader-section">
         <LottieLoadingAnimation />
       </div>
-      <div
-        v-else
-        style="
-          display: flex;
-          flex-direction: row;
-          flex: 1;
-          flex-wrap: wrap;
-          justify-content: space-between;
-        "
-      >
+      <div v-else class="product-listing-section">
         <div
           v-for="(product, index) in products"
           :key="index"
@@ -92,89 +38,57 @@
             style="max-width: 100%; border-radius: 16px"
             :src="product.imageUrl"
           />
-          <div
-            style="
-              color: #000;
-              margin-top: 8px;
-              font-size: 16px;
-              font-style: normal;
-              font-weight: 400;
-            "
-          >
-            {{ product.name }}
+
+          <div>
+            <div class="text-gray-8 text-large" style="margin-top: 8px">
+              {{ product.name }}
+            </div>
+
+            <div
+              style="display: flex; flex-direction: row; align-items: center"
+            >
+              <div class="text-gray-4 text-small">
+                {{ product.sellerName }}
+              </div>
+              <span
+                v-if="product.isVerifiedSeller"
+                class="material-symbols-outlined text-blue text-small"
+                style="margin-left: 4px"
+              >
+                check_circle
+              </span>
+            </div>
           </div>
-          <div
-            style="
-              color: #7c7a7a;
-              margin-top: 8px;
-              margin-bottom: 8px;
-              font-size: 12px;
-              font-style: normal;
-              font-weight: 400;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              display: -webkit-box;
-              -webkit-line-clamp: 2;
-              line-clamp: 2;
-              -webkit-box-orient: vertical;
-            "
-          >
+
+          <div class="text-gray-5 text-small description" style="">
             {{ product.desc }}
           </div>
-          <div style="font-size: 16px; font-style: normal; font-weight: 800">
+          <div class="text-large text-gray-8 text-bold">
             {{ product.price }}
           </div>
 
           <div>
-            <div
-              style="
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-                margin-top: 4px;
-              "
-            >
-              <span
-                class="material-symbols-outlined"
-                style="color: rgb(255, 166, 0); font-size: 14px"
-              >
+            <div class="additional-detail">
+              <span class="material-symbols-outlined text-orange text-large">
                 grade
               </span>
               <div
-                style="
-                  margin-left: 4px;
-                  color: #9d9b9b;
-                  font-size: 12px;
-                  font-style: normal;
-                  font-weight: 400;
-                "
+                class="text-small text-gray-4"
+                style="margin: 4px 0px 0px 4px"
               >
                 {{ product.rating }} | {{ product.sold }} terjual
               </div>
             </div>
 
             <div
-              style="
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-                margin-top: 4px;
-              "
+              style="display: flex; flex-direction: row; align-items: center"
             >
-              <span
-                class="material-symbols-outlined"
-                style="color: #00aa5b; font-size: 14px"
-              >
+              <span class="material-symbols-outlined text-green text-large">
                 location_on
               </span>
               <div
-                style="
-                  margin-left: 4px;
-                  color: #9d9b9b;
-                  font-size: 12px;
-                  font-style: normal;
-                  font-weight: 400;
-                "
+                class="text-small text-gray-4"
+                style="margin: 4px 0px 0px 4px"
               >
                 {{ product.sellerRegion }}
               </div>
@@ -236,8 +150,58 @@ export default {
   padding: 12px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
-  &.image {
+  .image {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   }
+
+  .additional-detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 4px;
+  }
+
+  .description {
+    margin: 8px 0px 8px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
+.navbar {
+  position: fixed;
+  display: flex;
+  background-color: black;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-between;
+  padding: 12px;
+}
+.product-listing-wrapper {
+  margin-top: 64px;
+  padding: 16px 16px 0px 16px;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-listing-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product-loader-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

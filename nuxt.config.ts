@@ -6,6 +6,6 @@ export default defineNuxtConfig({
       link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Poppins' }, { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0' } ]
     }
   },
-  css: ['~/assets/scss/main.scss'],
+  css: ['~/assets/scss/main.scss', '~/assets/scss/utils.scss'],
  
 })

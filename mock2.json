@@ -1,0 +1,41 @@
+{
+    "data": {
+        "products": [
+            {
+                "id": 1,
+                "name": "Koko Stylish Red",
+                "price": 250000,
+                "desc": "Stylish red baju koko for men",
+                "longDesc": "High-quality baju koko with a stylish design in red.",
+                "stock": 50,
+                "rating": 4.5,
+                "sold": 30,
+                "imageUrl": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//93/MTA-44446520/brd-44261_kemeja-koko-arkanda-baju-muslim-pria-baju-koko-koko-gamis-pria-baju-muslim-pria-kemeja-kemeja-muslim-_full07.jpg",
+                "sellerName": "Toko Stylish Fashion",
+                "sellerRegion": "Jakarta",
+                "availableSizes": ["S", "M", "L", "XL"],
+                "availableColors": ["Red", "Black", "White"],
+                "isNew": true,
+                "isVerifiedSeller": true
+            },
+                      {
+                "id": 1,
+                "name": "Koko Stylish Red",
+                "price": 250000,
+                "desc": "Stylish red baju koko for men",
+                "longDesc": "High-quality baju koko with a stylish design in red.",
+                "stock": 50,
+                "rating": 4.5,
+                "sold": 30,
+                "imageUrl": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//93/MTA-44446520/brd-44261_kemeja-koko-arkanda-baju-muslim-pria-baju-koko-koko-gamis-pria-baju-muslim-pria-kemeja-kemeja-muslim-_full07.jpg",
+                "sellerName": "Toko Stylish Fashion",
+                "sellerRegion": "Jakarta",
+                "availableSizes": ["S", "M", "L", "XL"],
+                "availableColors": ["Red", "Black", "White"],
+                "isNew": true,
+                "isVerifiedSeller": true
+            },
+
+        ]
+    }
+}
