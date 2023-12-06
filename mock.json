@@ -1,0 +1,136 @@
+{
+    "data": {
+        "products": [
+            {
+                "id": 1,
+                "name": "Koko Rafi",
+                "price": "Rp 120,000",
+                "desc": "Koko lengan panjang dengan warna netral",
+                "longDesc": "Koko Rafi adalah pilihan yang nyaman dan stylish. Cocok untuk acara formal maupun casual.",
+                "stock": 30,
+                "rating": 4.0,
+                "sold": 80,
+                "imageUrl": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//93/MTA-44446520/brd-44261_kemeja-koko-arkanda-baju-muslim-pria-baju-koko-koko-gamis-pria-baju-muslim-pria-kemeja-kemeja-muslim-_full07.jpg",
+                "sellerRegion": "Jakarta",
+                "isNew": false
+            },
+            {
+                "id": 4,
+                "name": "Celana Sirwal",
+                "price": "Rp 60,000",
+                "desc": "Celana sirwal polos dengan kantong",
+                "longDesc": "Celana Sirwal dengan desain polos dan kantong praktis. Nyaman dipakai sehari-hari.",
+                "stock": 40,
+                "rating": 3.5,
+                "sold": 60,
+                "imageUrl": "https://images.tokopedia.net/img/cache/700/VqbcmM/2022/3/19/83947907-2579-49c9-8555-98a2967bda6c.jpg",
+                "sellerRegion": "Yogyakarta",
+                "isNew": false
+            },
+            {
+                "id": 7,
+                "name": "Sarung Anwar",
+                "price": "Rp 40,000",
+                "desc": "Sarung katun yang nyaman dipakai",
+                "longDesc": "Sarung Anwar dengan bahan katun yang nyaman di kulit. Cocok untuk ibadah dan sehari-hari.",
+                "stock": 80,
+                "rating": 3.9,
+                "sold": 130,
+                "imageUrl": "https://images.tokopedia.net/img/cache/700/VqbcmM/2022/3/19/25c17022-e9ce-495c-95ac-87f323bde2ef.jpg",
+                "sellerRegion": "Semarang",
+                "isNew": false
+            },
+            {
+                "id": 9,
+                "name": "Baju Koko Adam",
+                "price": "Rp 110,000",
+                "desc": "Baju koko dengan desain klasik",
+                "longDesc": "Baju Koko Adam dengan desain klasik yang tetap fashionable. Cocok untuk acara resmi.",
+                "stock": 35,
+                "rating": 4.4,
+                "sold": 70,
+                "imageUrl": "https://id-test-11.slatic.net/p/9e05e908efbda08746d1bb0548caf451.jpg",
+                "sellerRegion": "Makassar",
+                "isNew": false
+            },
+            {
+                "id": 11,
+                "name": "Koko Azhar",
+                "price": "Rp 85,000",
+                "desc": "Koko dengan motif garis-garis",
+                "longDesc": "Koko Azhar hadir dengan motif garis-garis yang modern. Cocok untuk tampilan yang kasual.",
+                "stock": 45,
+                "rating": 4.2,
+                "sold": 90,
+                "imageUrl": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2020/4/29/0a160046-1926-41d2-b13b-be213fc39946.jpg",
+                "sellerRegion": "Bandung",
+                "isNew": false
+            },
+            {
+                "id": 14,
+                "name": "Celana Jeans Islami",
+                "price": "Rp 150,000",
+                "desc": "Celana jeans dengan potongan Islami",
+                "longDesc": "Celana Jeans Islami dengan potongan yang sesuai dengan prinsip Islami. Nyaman digunakan sehari-hari.",
+                "stock": 25,
+                "rating": 4.6,
+                "sold": 120,
+                "imageUrl": "https://s1.bukalapak.com/img/12699352282/s-463-463/data.jpeg.webp",
+                "sellerRegion": "Surabaya",
+                "isNew": false
+            },
+            {
+                "id": 17,
+                "name": "Jaket Muslimah",
+                "price": "Rp 200,000",
+                "desc": "Jaket dengan desain Muslimah",
+                "longDesc": "Jaket Muslimah dengan desain yang modern dan sesuai dengan nilai-nilai Islam. Cocok untuk berbagai acara.",
+                "stock": 20,
+                "rating": 4.8,
+                "sold": 150,
+                "imageUrl": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2022/2/13/99c6dfb4-5164-44fa-9191-ce6fb2c2113e.jpg",
+                "sellerRegion": "Bali",
+                "isNew": false
+            },
+            {
+                "id": 20,
+                "name": "Sarung Jeans",
+                "price": "Rp 80,000",
+                "desc": "Sarung dengan bahan jeans",
+                "longDesc": "Sarung Jeans dengan bahan jeans yang memberikan kesan casual dan stylish. Cocok untuk berbagai kesempatan.",
+                "stock": 50,
+                "rating": 3.7,
+                "sold": 100,
+                "imageUrl": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//93/MTA-44446520/brd-44261_kemeja-koko-arkanda-baju-muslim-pria-baju-koko-koko-gamis-pria-baju-muslim-pria-kemeja-kemeja-muslim-_full05.jpg",
+                "sellerRegion": "Medan",
+                "isNew": false
+            },
+            {
+                "id": 23,
+                "name": "Kemeja Koko Modern",
+                "price": "Rp 130,000",
+                "desc": "Kemeja Koko dengan desain modern",
+                "longDesc": "https://images.tokopedia.net/img/cache/700/VqbcmM/2021/12/19/047af21e-70c5-41c6-9179-c2cf2ec947a0.jpg",
+                "stock": 30,
+                "rating": 4.3,
+                "sold": 110,
+                "imageUrl": "https://id-test-11.slatic.net/p/1c4aa038fb1bcf377550ffe973f85987.jpg",
+                "sellerRegion": "Palembang",
+                "isNew": false
+            },
+            {
+                "id": 26,
+                "name": "Topi Muslim",
+                "price": "Rp 35,000",
+                "desc": "Topi dengan simbol Islam",
+                "longDesc": "Topi Muslim dengan simbol Islam yang khas. Tersedia dalam berbagai warna.",
+                "stock": 60,
+                "rating": 3.9,
+                "sold": 80,
+                "imageUrl": "https://id-test-11.slatic.net/p/a155dbb7939f22c13b2d5365d8e41907.jpg",
+                "sellerRegion": "Banda Aceh",
+                "isNew": false
+            }
+        ]
+    }
+}
