@@ -12,5 +12,16 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: flex-start;
+}
 
+.navbar {
+    position: fixed;
+    display: flex;
+    background-color: black;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+    padding: 12px;
 }

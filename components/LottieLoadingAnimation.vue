@@ -1,7 +1,7 @@
 <!-- components/LottieAnimation.vue -->
 
 <template>
-  <div ref="lottieContainer" style="width: 300px"></div>
+  <div ref="lottieContainer" style="width: 240px"></div>
 </template>
 
 <script setup>
