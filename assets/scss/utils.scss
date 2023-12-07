@@ -2,12 +2,20 @@
     color: white;
 }
 
+.text-black {
+    color: black;
+}
+
 .text-blue {
     color: #1da1f2;
 }
 
 .text-orange {
     color: rgb(255, 166, 0);
+}
+
+.text-red {
+    color: #F42C4B;
 }
 
 .text-green {
@@ -63,8 +71,13 @@
 }
 
 .text-xlarge {
+    font-size: 18px;
+}
+
+.text-xxlarge {
     font-size: 24px;
 }
+
 
 .text-bold {
     font-weight: bold;

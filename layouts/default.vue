@@ -11,7 +11,9 @@
       <span class="material-symbols-outlined text-white"> menu </span>
     </div>
 
-    <slot />
+    <div style="margin-top: 64px">
+      <slot />
+    </div>
   </div>
 </template>
 

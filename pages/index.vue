@@ -2,19 +2,19 @@
   <div style="display: flex; flex-direction: column">
     <div class="product-listing-wrapper">
       <div style="display: flex; flex-direction: column">
-        <div class="text-gray-8 text-xlarge text-bold">"Baju Koko Harian"</div>
-        <div class="text-gray-4 text-medium">
+        <p class="text-gray-8 text-xxlarge text-bold">"Baju Koko Harian"</p>
+        <p class="text-gray-4 text-medium">
           {{
             isLoading
               ? 'Sedang mengambil data produk...'
               : `${products.length} produk ditemukan`
           }}
-        </div>
+        </p>
       </div>
     </div>
 
     <div style="padding: 0px 16px 0px 16px">
-      <div v-if="isLoading" class="product-loader-section">
+      <div v-if="isLoading" class="loader-section">
         <LottieLoadingAnimation />
       </div>
       <div v-else class="product-listing-section">
@@ -34,6 +34,7 @@
             :sellerRegion="product.sellerRegion"
             :sellerName="product.sellerName"
             :isVerifiedSeller="product.isVerifiedSeller"
+            :isLiked="index % 2 === 0"
           />
         </div>
       </div>
@@ -70,7 +71,6 @@ export default {
       this.isLoading = true
       try {
         // api call to get static products data
-
         const response = await fetch(
           'https://my-json-server.typicode.com/faizkautsarr/demo-mock/data'
         )
@@ -88,7 +88,6 @@ export default {
 
 <style lang="scss">
 .product-listing-wrapper {
-  margin-top: 64px;
   padding: 16px 16px 0px 16px;
   flex-direction: row;
   display: flex;
@@ -101,12 +100,5 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.product-loader-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 </style>

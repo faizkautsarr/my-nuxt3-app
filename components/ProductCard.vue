@@ -1,5 +1,28 @@
 <template>
-  <div style="display: flex; flex-direction: column">
+  <div
+    style="display: flex; flex-direction: column"
+    @click="goToProductDetail(id)"
+  >
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-bottom: 8px;
+      "
+    >
+      <span
+        v-if="isLiked"
+        class="material-symbols-outlined material-symbols-outlined__filled text-red text-xlarge"
+      >
+        favorite
+      </span>
+
+      <span v-else class="material-symbols-outlined text-black text-xlarge">
+        favorite
+      </span>
+    </div>
+
     <img
       class="image"
       style="max-width: 100%; border-radius: 16px"
@@ -7,17 +30,17 @@
     />
 
     <div>
-      <div class="text-gray-8 text-large" style="margin-top: 8px">
+      <p class="text-gray-8 text-large" style="margin-top: 8px">
         {{ name }}
-      </div>
+      </p>
 
       <div style="display: flex; flex-direction: row; align-items: center">
-        <div class="text-gray-4 text-small">
+        <p class="text-small">
           {{ sellerName }}
-        </div>
+        </p>
         <span
           v-if="isVerifiedSeller"
-          class="material-symbols-outlined text-blue text-small"
+          class="material-symbols-outlined material-symbols-outlined__filled text-blue text-small"
           style="margin-left: 4px"
         >
           check_circle
@@ -25,30 +48,32 @@
       </div>
     </div>
 
-    <div class="text-gray-5 text-small description" style="">
+    <p class="text-gray-5 text-small description" style="">
       {{ desc }}
-    </div>
-    <div class="text-large text-gray-8 text-bold">
+    </p>
+    <p class="text-large text-gray-8 text-bold">
       {{ price }}
-    </div>
+    </p>
 
     <div>
       <div class="additional-detail">
-        <span class="material-symbols-outlined text-orange text-large">
+        <span
+          class="material-symbols-outlined material-symbols-outlined__filled text-orange text-large"
+        >
           grade
         </span>
-        <div class="text-small text-gray-4" style="margin: 4px 0px 0px 4px">
+        <p class="text-small text-gray-4" style="margin: 4px 0px 0px 4px">
           {{ rating }} | {{ sold }} terjual
-        </div>
+        </p>
       </div>
 
       <div style="display: flex; flex-direction: row; align-items: center">
         <span class="material-symbols-outlined text-green text-large">
           location_on
         </span>
-        <div class="text-small text-gray-4" style="margin: 4px 0px 0px 4px">
+        <p class="text-small text-gray-4" style="margin: 4px 0px 0px 4px">
           {{ sellerRegion }}
-        </div>
+        </p>
       </div>
     </div>
   </div>
@@ -96,6 +121,16 @@ export default {
     isVerifiedSeller: {
       required: true,
       type: Boolean
+    },
+    isLiked: {
+      default: false,
+      type: Boolean
+    }
+  },
+  methods: {
+    goToProductDetail(id) {
+      console.log('masuk')
+      this.$router.push('/product/' + id)
     }
   }
 }
