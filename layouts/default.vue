@@ -9,7 +9,7 @@
         style="width: 24px"
       />
       <span
-        @click="showFeautureNotReadyPopUp()"
+        @click="featureNotReadyNotif.showFeatureNotReadyNotif"
         class="material-symbols-outlined text-white"
       >
         menu
@@ -18,7 +18,7 @@
 
     <transition name="fade">
       <span
-        v-if="isShowLikePopUp"
+        v-if="likeNotif.isShowLikeNotif.value"
         class="material-symbols-outlined material-symbols-outlined__filled text-red"
         style="
           font-size: 72px;
@@ -34,7 +34,7 @@
 
     <transition name="fade">
       <div
-        v-if="isShowFeatureNotReadyPopUp"
+        v-if="featureNotReadyNotif.isShowFeatureNotReadyNotif.value"
         class="text-small text-white"
         style="
           position: fixed;
@@ -62,21 +62,25 @@
 </template>
 
 <script setup>
-const isShowLikePopUp = useShowLikePopUp()
-const isShowFeatureNotReadyPopUp = useShowFeatureNotReadyPopUp()
+const featureNotReadyNotif = useShowFeatureNotReadyNotif()
+const likeNotif = useShowLikeNotif()
 
-const showFeautureNotReadyPopUp = () => {
-  isShowFeatureNotReadyPopUp.value = true
-  setTimeout(() => {
-    isShowFeatureNotReadyPopUp.value = false
-  }, 500)
+const showFeatureNotReadyNotif = () => {
+  featureNotReadyNotif.showFeatureNotReadyNotif()
 }
+
+const showLikeNotif = () => {
+  likeNotif.showLikeNotif()
+}
+
+provide('showFeatureNotReadyNotif', showFeatureNotReadyNotif)
+provide('showLikeNotif', showLikeNotif)
+
 const backToHome = () => {
   const route = useRoute()
   const router = useRouter()
   const currentRouteName = route.name
 
-  console.log(currentRouteName)
   if (currentRouteName.toString().includes('product')) {
     router.push('/')
   } else {

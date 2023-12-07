@@ -20,7 +20,7 @@
         </span>
 
         <span
-          @click="showFeautureNotReadyPopUp"
+          @click="showFeatureNotReadyNotif"
           class="material-symbols-outlined text-black text-xxlarge"
           style="margin-left: 8px"
         >
@@ -145,7 +145,7 @@
           </div>
         </div>
       </div>
-      <div class="button" @click="showFeautureNotReadyPopUp">Beli Sekarang</div>
+      <div class="button" @click="showFeatureNotReadyNotif">Beli Sekarang</div>
     </div>
   </div>
 </template>
@@ -158,8 +158,9 @@ const selectedSize = ref('')
 const isLiked = ref(false)
 const route = useRoute()
 const likedProducts = useLikedProducts()
-const isShowLikePopUp = useShowLikePopUp()
-const isShowFeatureNotReadyPopUp = useShowFeatureNotReadyPopUp()
+
+const showFeatureNotReadyNotif = inject('showFeatureNotReadyNotif')
+const showLikeNotif = inject('showLikeNotif')
 
 const fetchProducts = async () => {
   isLoading.value = true
@@ -177,23 +178,10 @@ const fetchProducts = async () => {
   isLoading.value = false
 }
 
-const showFeautureNotReadyPopUp = () => {
-  isShowFeatureNotReadyPopUp.value = true
-  setTimeout(() => {
-    isShowFeatureNotReadyPopUp.value = false
-  }, 500)
-}
-
-const showLikeAnimation = () => {
-  isShowLikePopUp.value = true
-  setTimeout(() => {
-    isShowLikePopUp.value = false
-  }, 500)
-}
 const setLikedProduct = () => {
   isLiked.value = !isLiked.value
   if (!likedProducts.value.includes(route.params.id)) {
-    showLikeAnimation()
+    showLikeNotif()
     likedProducts.value.push(route.params.id)
   } else {
     const newLikedProducts = likedProducts.value.filter(

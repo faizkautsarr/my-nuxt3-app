@@ -126,14 +126,8 @@ const props = defineProps({
 const likedProducts = useLikedProducts()
 const router = useRouter()
 const isLiked = ref(false)
-const isShowLikePopUp = useShowLikePopUp()
 
-const showLikeAnimation = () => {
-  isShowLikePopUp.value = true
-  setTimeout(() => {
-    isShowLikePopUp.value = false
-  }, 500)
-}
+const showLikeNotif = inject('showLikeNotif')
 
 const goToProductDetail = () => {
   router.push('/product/' + props.id)
@@ -145,7 +139,7 @@ const setLikedProduct = (event) => {
   isLiked.value = !isLiked.value
   if (!likedProducts.value.includes(props.id.toString())) {
     likedProducts.value.push(props.id.toString())
-    showLikeAnimation()
+    showLikeNotif()
   } else {
     const newLikedProducts = likedProducts.value.filter(
       (id) => id !== props.id.toString()
