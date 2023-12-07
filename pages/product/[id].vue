@@ -145,7 +145,7 @@
               grade
             </span>
             <p class="text-small text-gray-4" style="margin: 2px 0px 0px 4px">
-              {{ product.rating }} | {{ product.sold }} barang telah terjual
+              {{ product.rating }} | {{ product.sold }} terjual
             </p>
           </div>
         </div>
