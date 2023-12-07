@@ -128,12 +128,12 @@
             <span
               v-if="product.isVerifiedSeller"
               class="material-symbols-outlined material-symbols-outlined__filled text-blue text-small"
-              style="margin: 0px 4px 0px 4px"
+              style="margin-left: 4px"
             >
               check_circle
             </span>
 
-            <p class="text-small text-gray-4">
+            <p class="text-small text-gray-4" style="margin-left: 4px">
               {{ product.sellerRegion }}
             </p>
           </div>
