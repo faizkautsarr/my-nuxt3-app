@@ -5,7 +5,6 @@
     </div>
 
     <div v-else class="product-detail-wrapper">
-      <div>{{ likedProducts }}</div>
       <img class="main-image" :src="product.imageUrl" />
 
       <div style="margin-top: 8px; display: flex; justify-content: flex-end">

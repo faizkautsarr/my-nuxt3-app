@@ -14,7 +14,6 @@
     </div>
 
     <div style="padding: 0px 16px 0px 16px">
-      <div>{{ likedProducts }}</div>
       <div v-if="isLoading" class="loader-section">
         <LottieLoadingAnimation />
       </div>
