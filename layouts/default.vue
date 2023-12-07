@@ -8,9 +8,53 @@
         alt="brand logo"
         style="width: 24px"
       />
-      <span class="material-symbols-outlined text-white"> menu </span>
+      <span
+        @click="showFeautureNotReadyPopUp()"
+        class="material-symbols-outlined text-white"
+      >
+        menu
+      </span>
     </div>
 
+    <transition name="fade">
+      <span
+        v-if="isShowLikePopUp"
+        class="material-symbols-outlined material-symbols-outlined__filled text-red"
+        style="
+          font-size: 72px;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        "
+      >
+        favorite
+      </span>
+    </transition>
+
+    <transition name="fade">
+      <div
+        v-if="isShowFeatureNotReadyPopUp"
+        class="text-small text-white"
+        style="
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 9999;
+          padding: 12px;
+          width: 240px;
+          background-color: black;
+          border-radius: 8px;
+          text-align: center;
+          box-shadow:
+            rgba(0, 0, 0, 0.19) 0px 10px 20px,
+            rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        "
+      >
+        Maaf, fitur tersebut belum tersedia
+      </div>
+    </transition>
     <div style="margin-top: 64px">
       <slot />
     </div>
@@ -18,6 +62,15 @@
 </template>
 
 <script setup>
+const isShowLikePopUp = useShowLikePopUp()
+const isShowFeatureNotReadyPopUp = useShowFeatureNotReadyPopUp()
+
+const showFeautureNotReadyPopUp = () => {
+  isShowFeatureNotReadyPopUp.value = true
+  setTimeout(() => {
+    isShowFeatureNotReadyPopUp.value = false
+  }, 500)
+}
 const backToHome = () => {
   const route = useRoute()
   const router = useRouter()

@@ -43,7 +43,6 @@
 
 <script setup>
 const products = ref([])
-const likedProducts = useLikedProducts()
 const isLoading = ref(false)
 
 const fetchProducts = async () => {
