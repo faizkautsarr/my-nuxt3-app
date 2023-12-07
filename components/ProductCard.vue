@@ -1,7 +1,7 @@
 <template>
   <div
     style="display: flex; flex-direction: column"
-    @click="goToProductDetail(id)"
+    @click="goToProductDetail()"
   >
     <div
       style="
@@ -12,13 +12,13 @@
       "
     >
       <span
-        v-if="isLiked"
-        class="material-symbols-outlined material-symbols-outlined__filled text-red text-xlarge"
+        @click="(event) => setLikedProduct(event)"
+        class="material-symbols-outlined text-xlarge"
+        :class="{
+          'text-black': !isLiked,
+          'material-symbols-outlined__filled text-red': isLiked
+        }"
       >
-        favorite
-      </span>
-
-      <span v-else class="material-symbols-outlined text-black text-xlarge">
         favorite
       </span>
     </div>
@@ -79,95 +79,75 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    id: {
-      required: true,
-      type: Number
-    },
-    imageUrl: {
-      required: true,
-      type: String
-    },
-    rating: {
-      required: true,
-      type: Number
-    },
-    sold: {
-      required: true,
-      type: Number
-    },
-    name: {
-      required: true,
-      type: String
-    },
-    price: {
-      required: true,
-      type: String
-    },
-    desc: {
-      required: true,
-      type: String
-    },
-    sellerRegion: {
-      required: true,
-      type: String
-    },
-    sellerName: {
-      required: true,
-      type: String
-    },
-    isVerifiedSeller: {
-      required: true,
-      type: Boolean
-    },
-    isLiked: {
-      default: false,
-      type: Boolean
-    }
+<script setup>
+const props = defineProps({
+  id: {
+    required: true,
+    type: Number
   },
-  methods: {
-    goToProductDetail(id) {
-      console.log('masuk')
-      this.$router.push('/product/' + id)
-    }
+  imageUrl: {
+    required: true,
+    type: String
+  },
+  rating: {
+    required: true,
+    type: Number
+  },
+  sold: {
+    required: true,
+    type: Number
+  },
+  name: {
+    required: true,
+    type: String
+  },
+  price: {
+    required: true,
+    type: String
+  },
+  desc: {
+    required: true,
+    type: String
+  },
+  sellerRegion: {
+    required: true,
+    type: String
+  },
+  sellerName: {
+    required: true,
+    type: String
+  },
+  isVerifiedSeller: {
+    required: true,
+    type: Boolean
+  }
+})
+
+const likedProducts = useLikedProducts()
+const router = useRouter()
+const isLiked = ref(false)
+
+const goToProductDetail = () => {
+  router.push('/product/' + props.id)
+}
+
+const setLikedProduct = (event) => {
+  // handle trigger parent click
+  event.stopPropagation()
+  isLiked.value = !isLiked.value
+  if (!likedProducts.value.includes(props.id.toString())) {
+    likedProducts.value.push(props.id.toString())
+  } else {
+    const newLikedProducts = likedProducts.value.filter(
+      (id) => id !== props.id.toString()
+    )
+    likedProducts.value = newLikedProducts
   }
 }
+
+onMounted(() => {
+  if (likedProducts.value.includes(props.id.toString())) {
+    isLiked.value = true
+  }
+})
 </script>
-
-<style lang="scss">
-.product-card {
-  border-radius: 16px;
-  background: #fff;
-  width: calc(100vw / 2 - 48px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-top: 16px;
-  padding: 12px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-
-  .image {
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-  }
-
-  .additional-detail {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 4px;
-  }
-
-  .description {
-    margin: 8px 0px 8px 0px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
-}
-</style>

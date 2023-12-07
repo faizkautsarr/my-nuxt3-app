@@ -17,18 +17,17 @@
   </div>
 </template>
 
-<script>
-export default {
-  methods: {
-    backToHome() {
-      const route = useRoute()
-      const currentRouteName = route.name
-      if (currentRouteName === 'index') {
-        this.$router.go()
-      } else {
-        this.$router.push('/')
-      }
-    }
+<script setup>
+const backToHome = () => {
+  const route = useRoute()
+  const router = useRouter()
+  const currentRouteName = route.name
+
+  console.log(currentRouteName)
+  if (currentRouteName.toString().includes('product')) {
+    router.push('/')
+  } else {
+    router.go('')
   }
 }
 </script>

@@ -3,19 +3,14 @@
     <div v-if="isLoading" class="loader-section">
       <LottieLoadingAnimation />
     </div>
+
     <div v-else class="product-detail-wrapper">
+      <div>{{ likedProducts }}</div>
       <img class="main-image" :src="product.imageUrl" />
 
-      <div
-        style="
-          margin-top: 8px;
-          align-self: normal;
-          display: flex;
-          justify-content: flex-end;
-        "
-      >
+      <div style="margin-top: 8px; display: flex; justify-content: flex-end">
         <span
-          @click="isLiked = !isLiked"
+          @click="setLikedProduct()"
           class="material-symbols-outlined text-xxlarge"
           :class="{
             'text-black': !isLiked,
@@ -155,127 +150,47 @@
   </div>
 </template>
 
-<script>
-export default {
-  layout: 'default',
-  data() {
-    return {
-      isLoading: false,
-      product: {},
-      selectedColor: '',
-      selectedSize: '',
-      isLiked: false
-    }
-  },
-  created() {
-    this.fetchProducts()
-  },
-  methods: {
-    async fetchProducts() {
-      this.isLoading = true
-      try {
-        // api call to get static products data
-        const response = await fetch(
-          'https://my-json-server.typicode.com/faizkautsarr/demo-mock/data'
-        )
-        const data = await response.json()
-        this.product = data.products.filter(
-          (product) => product.id === parseInt(this.$route.params.id)
-        )[0]
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      }
-      this.isLoading = false
-    }
+<script setup>
+const isLoading = ref(false)
+const product = ref({})
+const selectedColor = ref('')
+const selectedSize = ref('')
+const isLiked = ref(false)
+const route = useRoute()
+const likedProducts = useLikedProducts()
+
+const fetchProducts = async () => {
+  isLoading.value = true
+  try {
+    const response = await fetch(
+      'https://my-json-server.typicode.com/faizkautsarr/demo-mock/data'
+    )
+    const data = await response.json()
+    product.value = data.products.filter(
+      (product) => product.id === parseInt(route.params.id)
+    )[0]
+  } catch (error) {
+    console.error('Error fetching data:', error)
+  }
+  isLoading.value = false
+}
+
+const setLikedProduct = () => {
+  isLiked.value = !isLiked.value
+  if (!likedProducts.value.includes(route.params.id)) {
+    likedProducts.value.push(route.params.id)
+  } else {
+    const newLikedProducts = likedProducts.value.filter(
+      (id) => id !== route.params.id
+    )
+    likedProducts.value = newLikedProducts
   }
 }
+
+onMounted(() => {
+  if (likedProducts.value.includes(route.params.id)) {
+    isLiked.value = true
+  }
+  fetchProducts()
+})
 </script>
-
-<style lang="scss" scoped>
-.product-detail-wrapper {
-  padding: 0px 16px 0px 16px;
-  flex-direction: column;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  .main-image {
-    max-width: 80%;
-    border-radius: 16px;
-    align-self: center;
-    box-shadow:
-      rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  }
-  .item-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    align-self: normal;
-  }
-
-  .seller-section {
-    padding: 8px 16px 8px 16px;
-    align-self: normal;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    border-radius: 16px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: 4px;
-    box-shadow:
-      rgba(0, 0, 0, 0.12) 0px 1px 3px,
-      rgba(0, 0, 0, 0.24) 0px 1px 2px;
-
-    .inner-wrapper {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      align-self: normal;
-      justify-content: space-between;
-    }
-  }
-
-  .button {
-    display: flex;
-    width: 100%;
-    height: 42px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 16px;
-    background: #000;
-    color: #f8f9fa;
-    font-weight: 400;
-    margin-top: 16px;
-  }
-
-  .rect-item-container {
-    display: flex;
-    flex-direction: row;
-    padding: 4px;
-    border-radius: 4px;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    margin-left: 8px;
-    border: 1px solid #adb5bd;
-
-    &__size-selected {
-      background-color: #343a40;
-      border: 2px solid transparent;
-      box-shadow:
-        rgba(0, 0, 0, 0.16) 0px 3px 6px,
-        rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    }
-
-    &__color-selected {
-      border: 2px solid transparent;
-      box-shadow:
-        rgba(0, 0, 0, 0.16) 0px 3px 6px,
-        rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    }
-  }
-}
-</style>

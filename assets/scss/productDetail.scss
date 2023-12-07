@@ -1,0 +1,83 @@
+.product-detail-wrapper {
+    padding: 0px 16px 0px 16px;
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+
+    .main-image {
+        max-width: 80%;
+        border-radius: 16px;
+        align-self: center;
+        box-shadow:
+            rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+            rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    }
+
+    .item-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .seller-section {
+        padding: 8px 16px 8px 16px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 16px;
+        justify-content: flex-start;
+
+        margin-top: 4px;
+        box-shadow:
+            rgba(0, 0, 0, 0.12) 0px 1px 3px,
+            rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+        .inner-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .button {
+        display: flex;
+        width: 100%;
+        height: 42px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 16px;
+        background: #000;
+        color: #f8f9fa;
+        font-weight: 400;
+        margin-top: 16px;
+    }
+
+    .rect-item-container {
+        display: flex;
+        flex-direction: row;
+        padding: 4px;
+        border-radius: 4px;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        margin-left: 8px;
+        border: 1px solid #adb5bd;
+
+        &__size-selected {
+            background-color: #343a40;
+            border: 2px solid transparent;
+            box-shadow:
+                rgba(0, 0, 0, 0.16) 0px 3px 6px,
+                rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        }
+
+        &__color-selected {
+            border: 2px solid transparent;
+            box-shadow:
+                rgba(0, 0, 0, 0.16) 0px 3px 6px,
+                rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        }
+    }
+}

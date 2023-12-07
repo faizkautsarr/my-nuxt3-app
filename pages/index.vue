@@ -14,6 +14,7 @@
     </div>
 
     <div style="padding: 0px 16px 0px 16px">
+      <div>{{ likedProducts }}</div>
       <div v-if="isLoading" class="loader-section">
         <LottieLoadingAnimation />
       </div>
@@ -34,7 +35,6 @@
             :sellerRegion="product.sellerRegion"
             :sellerName="product.sellerName"
             :isVerifiedSeller="product.isVerifiedSeller"
-            :isLiked="index % 2 === 0"
           />
         </div>
       </div>
@@ -42,63 +42,26 @@
   </div>
 </template>
 
-<script>
-import LottieLoadingAnimation from '~/components/LottieLoadingAnimation.vue'
-import ProductCard from '~/components/ProductCard.vue'
-export default {
-  layout: 'default',
-  data() {
-    return {
-      isLoading: false,
-      products: []
-    }
-  },
+<script setup>
+const products = ref([])
+const likedProducts = useLikedProducts()
+const isLoading = ref(false)
 
-  components: {
-    LottieLoadingAnimation,
-    ProductCard
-  },
-
-  async created() {
-    this.fetchProducts()
-  },
-
-  methods: {
-    goToUserPage() {
-      this.$router.push(`/`)
-    },
-    async fetchProducts() {
-      this.isLoading = true
-      try {
-        // api call to get static products data
-        const response = await fetch(
-          'https://my-json-server.typicode.com/faizkautsarr/demo-mock/data'
-        )
-        const data = await response.json()
-
-        this.products = data.products
-      } catch (error) {
-        console.error('Error fetching data:', error)
-      }
-      this.isLoading = false
-    }
+const fetchProducts = async () => {
+  isLoading.value = true
+  try {
+    const response = await fetch(
+      'https://my-json-server.typicode.com/faizkautsarr/demo-mock/data'
+    )
+    const data = await response.json()
+    products.value = data.products
+  } catch (error) {
+    console.error('Error fetching data:', error)
   }
+  isLoading.value = false
 }
+
+onMounted(() => {
+  fetchProducts()
+})
 </script>
-
-<style lang="scss">
-.product-listing-wrapper {
-  padding: 16px 16px 0px 16px;
-  flex-direction: row;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.product-listing-section {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-</style>
