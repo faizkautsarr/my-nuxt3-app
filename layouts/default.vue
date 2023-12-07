@@ -19,14 +19,7 @@
     <transition name="fade">
       <span
         v-if="likeNotif.isShowLikeNotif.value"
-        class="material-symbols-outlined material-symbols-outlined__filled text-red"
-        style="
-          font-size: 72px;
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        "
+        class="material-symbols-outlined material-symbols-outlined__filled text-red absolute-center"
       >
         favorite
       </span>
@@ -35,22 +28,7 @@
     <transition name="fade">
       <div
         v-if="featureNotReadyNotif.isShowFeatureNotReadyNotif.value"
-        class="text-small text-white"
-        style="
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 9999;
-          padding: 12px;
-          width: 240px;
-          background-color: black;
-          border-radius: 8px;
-          text-align: center;
-          box-shadow:
-            rgba(0, 0, 0, 0.19) 0px 10px 20px,
-            rgba(0, 0, 0, 0.23) 0px 6px 6px;
-        "
+        class="text-small text-white absolute-center feature-not-ready-notif"
       >
         Maaf, fitur tersebut belum tersedia
       </div>
@@ -73,6 +51,7 @@ const showLikeNotif = () => {
   likeNotif.showLikeNotif()
 }
 
+// provider for consumer to inject, to maintain reactivity
 provide('showFeatureNotReadyNotif', showFeatureNotReadyNotif)
 provide('showLikeNotif', showLikeNotif)
 

@@ -68,6 +68,25 @@ hr {
     }
 }
 
+.absolute-center {
+    font-size: 72px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.feature-not-ready-notif {
+    padding: 12px;
+    width: 240px;
+    background-color: black;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow:
+    rgba(0, 0, 0, 0.19) 0px 10px 20px,
+    rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
 .fade-enter-active {
     transition: opacity 0.2s;
 }
