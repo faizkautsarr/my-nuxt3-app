@@ -5,14 +5,16 @@
     justify-content: flex-start;
 
     .main-image {
-        max-width: 80%;
+        width: 100%;
         border-radius: 16px;
-        align-self: center;
-        box-shadow:
-            rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-            rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        display: flex;
     }
 
+    .swiper-pagination-bullet {
+        background-color: white;
+        color: white
+    }
+ 
     .item-wrapper {
         display: flex;
         justify-content: space-between;

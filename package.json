@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "lottie-web": "^5.12.2",
+    "nuxt-swiper": "^1.2.2",
     "sass": "^1.69.5"
   }
 }

@@ -3,11 +3,20 @@
     <div class="navbar">
       <!-- click to home -->
       <img
+        v-if="!currentRouteName.toString().includes('product')"
         @click="backToHome"
         src="~/assets/images/brand_logo.png"
         alt="brand logo"
         style="width: 24px"
       />
+
+      <span
+        v-else
+        @click="backToHome"
+        class="material-symbols-outlined text-white"
+      >
+        arrow_back
+      </span>
       <span
         @click="featureNotReadyNotif.showFeatureNotReadyNotif"
         class="material-symbols-outlined text-white"
@@ -42,6 +51,8 @@
 <script setup>
 const featureNotReadyNotif = useShowFeatureNotReadyNotif()
 const likeNotif = useShowLikeNotif()
+const route = useRoute()
+const currentRouteName = ref('')
 
 const showFeatureNotReadyNotif = () => {
   featureNotReadyNotif.showFeatureNotReadyNotif()
@@ -51,16 +62,19 @@ const showLikeNotif = () => {
   likeNotif.showLikeNotif()
 }
 
-// provider for consumer to inject, to maintain reactivity
+// Watch for changes in the route name
+watchEffect(() => {
+  console.log('Route Name Changed:', route.name)
+  currentRouteName.value = route.name
+})
+
 provide('showFeatureNotReadyNotif', showFeatureNotReadyNotif)
 provide('showLikeNotif', showLikeNotif)
 
 const backToHome = () => {
-  const route = useRoute()
   const router = useRouter()
-  const currentRouteName = route.name
 
-  if (currentRouteName.toString().includes('product')) {
+  if (currentRouteName.value.toString().includes('product')) {
     router.push('/')
   } else {
     router.go('')
