@@ -7,8 +7,6 @@ export default defineNuxtConfig({
     }
   },
  
- modules: ['nuxt-swiper'],
-  
-  css: ['~/assets/scss/main.scss', '~/assets/scss/utils.scss', '~/assets/scss/productCard.scss',  '~/assets/scss/productDetail.scss' ],
+  css: ['~/assets/scss/main.scss', '~/assets/scss/utils.scss', '~/assets/scss/productCard.scss',  '~/assets/scss/productDetail.scss'],
  
 })

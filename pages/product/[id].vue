@@ -5,32 +5,7 @@
     </div>
 
     <div v-else class="product-detail-wrapper">
-      <div style="border-radius: 16px">
-        <swiper
-          :modules="[SwiperPagination, SwiperAutoplay]"
-          :spaceBetween="32"
-          :slidesPerView="1"
-          :centeredSlides="true"
-          :allowSlidePrev="true"
-          :autoplay="{
-            delay: 3000,
-            disableOnInteraction: false
-          }"
-          :pagination="true"
-          backgroundColor="transparent"
-        >
-          <SwiperSlide>
-            <img class="main-image" :src="product.imageUrl" />
-          </SwiperSlide>
-          <SwiperSlide v-for="slide in 3" :key="slide">
-            <img class="main-image" src="~/assets/images/img_template_0.jpg" />
-          </SwiperSlide>
-
-          <!-- <SwiperPagination>
-            <div>123</div>
-          </SwiperPagination> -->
-        </swiper>
-      </div>
+      <img class="main-image" :src="product.imageUrl" />
       <div style="margin-top: 8px; display: flex; justify-content: flex-end">
         <span
           @click="setLikedProduct()"

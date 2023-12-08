@@ -64,7 +64,6 @@ const showLikeNotif = () => {
 
 // Watch for changes in the route name
 watchEffect(() => {
-  console.log('Route Name Changed:', route.name)
   currentRouteName.value = route.name
 })
 
